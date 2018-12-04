@@ -56,7 +56,8 @@ const config = {
     },
 
     // For potential debugging or special cases?
-    skipMinify: false
+    skipMinify: false,
+    productionSourceMap: false,
 }
 
 

@@ -168,7 +168,7 @@ module.exports = (env, argv) => {
         },
 
         // https://webpack.js.org/configuration/devtool/
-        devtool: (argv.mode == 'production') ? 'nosources-source-map' : 'eval-source-map',
+        devtool: (argv.mode == 'production') ? config.productionSourceMap ? 'nosources-source-map' : 'none' : 'eval-source-map',
 
         resolve: {
             extensions: ['*', '.js', '.vue', '.json'],
