@@ -1,0 +1,21 @@
+
+@import 'Styles/mixins.scss';
+@import 'Styles/globals.scss';
+@import 'Styles/fonts.scss';
+@import 'Styles/reset.scss';
+
+
+html, body {
+    width: 100%;
+    height: auto;
+    background-color: $mainColor;
+    color: $textColor;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 16px;
+
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+    

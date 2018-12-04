@@ -1,0 +1,19 @@
+{
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-console": "off",
+        "no-unused-vars": "off"
+    },
+    "globals": {
+        "WEBPACK_DEV": true
+    },
+    "extends": ["eslint:recommended", "plugin:vue/essential"],
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}

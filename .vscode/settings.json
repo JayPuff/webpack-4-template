@@ -1,0 +1,11 @@
+{
+    "window.zoomLevel": 0,
+    "editor.accessibilitySupport": "off",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.detectIndentation": false,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "vue"
+      ]
+}

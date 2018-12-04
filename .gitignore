@@ -1,0 +1,5 @@
+/node_modules
+/dist
+/installer
+/electron-app/node_modules
+/webpack/scripts/clone/node_modules

@@ -1,0 +1,76 @@
+{
+  "name": "webpack-4-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack/webpack.config.js --host 0.0.0.0 --mode development --open",
+    "dev": "webpack-dev-server --config ./webpack/webpack.config.js --host 0.0.0.0 --mode development",
+    "build": "rimraf ./dist && webpack --config ./webpack/webpack.config.js --mode production",
+    "electron": "npm-run-all -p -r _dev-electron _electron-dev",
+    "electron-build": "npm run _build-electron-files && cd dist && npm install --production && electron .",
+    "installer": "npm run _build-electron-files && rimraf ./installer && electron-builder --publish always",
+    "clean": "rimraf ./installer && rimraf ./dist",
+    "clone": "cd webpack/scripts/clone && npm i && node clone.js",
+    "_build-electron-files": "rimraf ./dist && set electronBuild=true && webpack --config ./webpack/webpack.config.js --mode production",
+    "_dev-electron": "set electronBuild=true && webpack-dev-server --config ./webpack/webpack.config.js --mode development",
+    "_electron-dev": "cd electron-app && electron . --devServer"
+  },
+  "build": {
+    "appId": "com.template.app",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://localhost:1337"
+      }
+    ],
+    "win": {
+      "icon": "static/favicon-256.ico"
+    },
+    "directories": {
+      "app": "dist",
+      "output": "installer"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "circular-dependency-plugin": "^5.0.2",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "electron": "^2.0.10",
+    "electron-builder": "^20.28.2",
+    "eslint": "^5.7.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.0.0-beta.3",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "lodash.debounce": "^4.0.8",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.0",
+    "npm-run-all": "^4.1.2",
+    "promise-polyfill": "^7.1.2",
+    "qs": "^6.5.2",
+    "resolve-url-loader": "^2.3.0",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.20.3",
+    "vue": "^2.5.17",
+    "vue-loader": "^15.4.2",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.17",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^3.0.1",
+    "webpack-dev-server": "^3.1.10",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "dependencies": {}
+}

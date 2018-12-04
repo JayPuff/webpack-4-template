@@ -1,0 +1,79 @@
+@mixin no-select () {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+@mixin flex ($direction, $justify, $align, $wrap: wrap, $reverse: false, $alignContent: null)  {
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display: flex;
+
+    @if $direction == 'row' {
+        -webkit-box-orient:horizontal;
+        -webkit-box-direction:normal;
+            -ms-flex-direction:row;
+                flex-direction:row;
+        @if $reverse {
+            -webkit-box-orient:horizontal;
+            -webkit-box-direction:reverse;
+                -ms-flex-direction:row-reverse;
+                    flex-direction:row-reverse;
+        }
+    }
+    @if $direction == 'column' {
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:normal;
+            -ms-flex-direction:column;
+                flex-direction:column;
+        @if $reverse {
+            -webkit-box-orient:vertical;
+            -webkit-box-direction:reverse;
+                -ms-flex-direction:column-reverse;
+                    flex-direction:column-reverse;
+        }
+    }
+
+    @if $wrap {
+        -ms-flex-wrap:$wrap;
+        flex-wrap:$wrap;
+    }
+
+
+    @if $justify {
+    -webkit-box-pack: $justify;
+        -ms-flex-pack: $justify;
+            justify-content: $justify;
+    }
+    
+    @if $align {
+    -webkit-box-align: $align;
+        -ms-flex-align: $align;
+            align-items: $align;
+    }
+
+    @if ($alignContent) {
+        -ms-flex-line-pack: $alignContent;
+            align-content: $alignContent;
+    }
+}
+
+@mixin flex-element ($flex, $order: null, $align: null) {
+    @if $flex {
+    -webkit-box-flex:$flex;
+        -ms-flex:$flex;
+            flex:$flex;
+    }
+    @if $order {
+    -webkit-box-ordinal-group:($order + 1);
+        -ms-flex-order:$order;
+            order:$order;
+    }
+    @if $align {
+    -ms-flex-item-align:$align;
+       -ms-grid-row-align:$align;
+        align-self:$align
+    }
+}
