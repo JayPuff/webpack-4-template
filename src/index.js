@@ -16,6 +16,9 @@ sync(store, router)
 
 Vue.config.productionTip = false
 
+// Try to fetch static config file
+store.dispatch('context/fetchStaticConfig')
+
 // Main Vue Instance and Component
 import App from 'Components/App'
 
@@ -27,9 +30,6 @@ new Vue({
     render: f => f(App)
 })
 
-
-// Try to fetch static config file
-store.dispatch('context/fetchStaticConfig')
 
 // If running within electron, check for updates.
 if (store.state.context.electron) {
