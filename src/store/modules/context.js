@@ -1,12 +1,16 @@
 import context from 'Tools/context'
-import Api from 'Api'
-const mobileThreshold = 600 
 
 // Initial State
 const state = {
-    mobile: context.isMobile(mobileThreshold),
+    // Running Environment 
     electron: context.isElectron(),
     dev: WEBPACK_DEV, /* Global exposed by webpack config, allowed by eslint as well. */
+
+    // Current CSS Breakpoint
+    breakpoint: context.getBreakpoint(),
+    
+    // Initial config from static/public folder `config.js`
+    // An easy way to configure app without recompiling etc. once deployed.
     config: {},
 }
 
@@ -18,14 +22,10 @@ const getters = {
 
 // actions
 const actions = {
-    refreshMobileState ({ commit, state }) {
-        let isMobile = context.isMobile(mobileThreshold)
-        if(state.mobile != isMobile) {
-            if(isMobile) {
-                commit('SET_MOBILE', {})
-            } else {
-                commit('SET_DESKTOP', {})
-            }
+    refreshBreakpoint ({ commit, state }) {
+        let newBreakpoint = context.getBreakpoint()
+        if(state.breakpoint != newBreakpoint) {
+            commit('SET_BREAKPOINT', { breakpoint: newBreakpoint})
         }
     },
 
@@ -41,12 +41,8 @@ const actions = {
 
 // mutations
 const mutations = {
-    SET_MOBILE (state, payload) {
-        state.mobile = true
-    },
-
-    SET_DESKTOP (state, payload) {
-        state.mobile = false
+    SET_BREAKPOINT (state, payload) {
+        state.breakpoint = payload.breakpoint
     },
 
     SET_STATIC_CONFIG (state, payload) {

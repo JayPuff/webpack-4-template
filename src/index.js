@@ -39,7 +39,7 @@ if (store.state.context.electron) {
 // Handle browser resize
 import debounce from 'lodash.debounce'
 
-const onResize = () => { store.dispatch('context/refreshMobileState') }
+const onResize = () => { store.dispatch('context/refreshBreakpoint') }
 const onResizeDebounced = debounce(onResize, 150)
 
 window.addEventListener('resize', () => {

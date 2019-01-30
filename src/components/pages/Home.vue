@@ -4,8 +4,8 @@
         <h2> {{ message }} </h2>
         <p> Running in <span :class="$store.state.context.dev ? 'blue' : 'purple'"> {{ $store.state.context.dev ? 'Development' : 'Production'}} </span> mode</p>
         <p> Running in <span :class="$store.state.context.electron ? 'blue' : 'green'"> {{ $store.state.context.electron ? 'Electron' : 'Browser'}} </span></p>
-        <p> Currently in <span :class="$store.state.context.mobile ? 'purple' : 'blue'">{{ $store.state.context.mobile ? `Mobile` : 'Desktop' }}</span> mode</p>
-        <p> {{ $store.state.context.config ? `Static Config: ${JSON.stringify($store.state.context.config)}` : 'No Static Config.' }} </p>
+        <p> Current CSS Breakpoint: <span class="purple">{{ $store.state.context.breakpoint }}</span></p>
+        <p> {{ $store.state.context.config ? `Static JSON Config: ${JSON.stringify($store.state.context.config)}` : 'No Static JSON Config.' }} </p>
     </div>
 </template>
 
