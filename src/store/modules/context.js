@@ -22,10 +22,10 @@ const state = {
 // getters
 const getters = {
     lessThan: state => breakpointName => state.breakpoint.value < state.breakpoints[breakpointName].value,
-    lessThanOrEqual: state => breakpointName => state.breakpoint.value <= state.breakpoints[breakpointName].value,
+    lessThanOrEquals: state => breakpointName => state.breakpoint.value <= state.breakpoints[breakpointName].value,
     equals: state => breakpointName => state.breakpoint.value == state.breakpoints[breakpointName].value,
     greaterThan: state => breakpointName => state.breakpoint.value > state.breakpoints[breakpointName].value,
-    greaterThanOrEqual: state => breakpointName => state.breakpoint.value >= state.breakpoints[breakpointName].value,
+    greaterThanOrEquals: state => breakpointName => state.breakpoint.value >= state.breakpoints[breakpointName].value,
 }
 
 

@@ -1,7 +1,8 @@
 <!-- Template -->
 <template>
-    <div class="template">
-        
+    <div class="example">
+        <div v-if="lessThanOrEquals('s')"> Mobile View </div>
+        <div v-if="greaterThan('s')"> Desktop View </div>
     </div>
 </template>
 
@@ -19,7 +20,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters('context', [ 'lessThanOrEqual', 'lessThan', 'equals', 'greaterThan', 'greaterThanOrEquals' ]),
+        ...mapGetters('context', [ 'lessThanOrEquals', 'lessThan', 'equals', 'greaterThan', 'greaterThanOrEquals' ]),
     } 
 
 };

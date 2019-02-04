@@ -5,7 +5,7 @@
         <p> Running in <span :class="$store.state.context.dev ? 'blue' : 'purple'"> {{ $store.state.context.dev ? 'Development' : 'Production'}} </span> mode</p>
         <p> Running in <span :class="$store.state.context.electron ? 'blue' : 'green'"> {{ $store.state.context.electron ? 'Electron' : 'Browser'}} </span></p>
         <p> Current CSS Breakpoint: <span class="purple">{{ $store.state.context.breakpoint.name }}</span></p>
-        <p v-if="lessThanOrEqual('xs')"> Phone Mode: <span class="purple" >{{ "Activated!" }}</span></p>
+        <p> Mobile or tablet: <span :class="lessThan('m') ? 'blue' : 'green'"> {{ lessThan('m') ? 'Yes' : 'Nope'}} </span></p>
         <p> {{ $store.state.context.config ? `Static JSON Config: ${JSON.stringify($store.state.context.config)}` : 'No Static JSON Config.' }} </p>
     </div>
 </template>
@@ -13,9 +13,10 @@
 
 <!-- Script -->
 <script>
+
 import { mapGetters } from 'vuex'
 export default {
-    components: {},
+    components: {  },
     data: () => {
         return {
             message: "Nick's Vue Project Template"
@@ -23,7 +24,7 @@ export default {
     },
 
     computed: {  
-        ...mapGetters('context', [ 'lessThanOrEqual', 'lessThan', 'equals', 'greaterThan', 'greaterThanOrEquals' ]),
+        ...mapGetters('context', [ 'lessThanOrEquals', 'lessThan', 'equals', 'greaterThan', 'greaterThanOrEquals' ]),
     }
 };
 </script>
