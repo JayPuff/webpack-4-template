@@ -9,6 +9,7 @@
 
 <!-- Script -->
 <script>
+import { mapGetters } from 'vuex'
 export default {
     components: {},
     data: () => {
@@ -18,6 +19,13 @@ export default {
         console.log("App component created successfully!")
         console.log(this.$store.state.context.dev ? 'Running in Development mode' : 'Running in Production mode')
     },
+    computed: mapGetters('context', [
+        'lessThanOrEqual',
+        'lessThan',
+        'equals',
+        'greaterThan',
+        'greaterThanOrEquals'
+    ]),
     methods: {
         enter(el, done) {
             el.style.display = "flex"

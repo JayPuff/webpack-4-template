@@ -18,20 +18,25 @@ context.clientSize = () => {
 
 // Get current break point
 // Ex: XS up to < 600
-const defaultBreakpoints = [
-    { name: 'xs', max: 600 },
-    { name: 's', max: 900 },
-    { name: 'm', max: 1200 },
-    { name: 'l', max: 1800 },
-    { name: 'xl', max: Infinity },
-]
+const defaultBreakpoints = {
+    'xs' : { name: 'xs', max: 600, value: 1 },
+    's': { name: 's', max: 900, value: 2 },
+    'm': { name: 'm', max: 1200, value: 3 },
+    'l': { name: 'l', max: 1800, value: 4 },
+    'xl': { name: 'xl', max: Infinity, value: 5 },
+}
 
-context.getBreakpoint = (overrideBreakpoints) => {
+context.getDefaultBreakpoints = () => {
+    return defaultBreakpoints
+}
+
+
+context.getCurrentBreakpoint = (targetBreakpoints) => {
     let size = context.clientSize()
-    let breakpoints = defaultBreakpoints || overrideBreakpoints
-    for(let b = 0; b < breakpoints.length; b++) {
+    let breakpoints = targetBreakpoints || defaultBreakpoints
+    for(let b in breakpoints) {
         if(size.width < breakpoints[b].max) {
-            return breakpoints[b].name
+            return { name: b, value: breakpoints[b].value, max:  breakpoints[b].max}
         }
     }
     return '?'

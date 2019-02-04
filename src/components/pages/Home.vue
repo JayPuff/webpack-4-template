@@ -4,7 +4,8 @@
         <h2> {{ message }} </h2>
         <p> Running in <span :class="$store.state.context.dev ? 'blue' : 'purple'"> {{ $store.state.context.dev ? 'Development' : 'Production'}} </span> mode</p>
         <p> Running in <span :class="$store.state.context.electron ? 'blue' : 'green'"> {{ $store.state.context.electron ? 'Electron' : 'Browser'}} </span></p>
-        <p> Current CSS Breakpoint: <span class="purple">{{ $store.state.context.breakpoint }}</span></p>
+        <p> Current CSS Breakpoint: <span class="purple">{{ $store.state.context.breakpoint.name }}</span></p>
+        <p v-if="lessThanOrEqual('xs')"> Phone Mode: <span class="purple" >{{ "Activated!" }}</span></p>
         <p> {{ $store.state.context.config ? `Static JSON Config: ${JSON.stringify($store.state.context.config)}` : 'No Static JSON Config.' }} </p>
     </div>
 </template>
@@ -12,6 +13,7 @@
 
 <!-- Script -->
 <script>
+import { mapGetters } from 'vuex'
 export default {
     components: {},
     data: () => {
@@ -20,7 +22,8 @@ export default {
         }
     },
 
-    mounted() {
+    computed: {  
+        ...mapGetters('context', [ 'lessThanOrEqual', 'lessThan', 'equals', 'greaterThan', 'greaterThanOrEquals' ]),
     }
 };
 </script>
