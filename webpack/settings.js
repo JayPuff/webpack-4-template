@@ -12,7 +12,8 @@ const config = {
     // What files/folders do we directly copy when building for Browser / Electron
     filesToCopy: {
         browser: [
-            {from: './static', to: './static'}
+            {from: './static', to: './static'},
+            {from: './src/server', to: './server'}
         ],
 
         electron: [

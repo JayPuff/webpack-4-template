@@ -10,11 +10,13 @@
 <!-- Script -->
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
     components: {},
     data: () => {
         return {};
     },
+    
     created() {
         console.log("App component created successfully!")
         console.log(this.$store.state.context.dev ? 'Running in Development mode' : 'Running in Production mode')
