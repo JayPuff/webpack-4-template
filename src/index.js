@@ -45,6 +45,3 @@ const onResizeDebounced = debounce(onResize, 150)
 window.addEventListener('resize', () => {
     onResizeDebounced()
 })
-
-
-
