@@ -118,6 +118,10 @@ window.electronAPIs.browserWindow = {
         remote.getCurrentWindow().setFullScreenable(boolean)
     },
 
+    setFullScreen: (boolean) => {
+        remote.getCurrentWindow().setFullScreen(boolean)
+    },
+
     setAlwaysOnTop: (boolean) => {
         remote.getCurrentWindow().setAlwaysOnTop(boolean)
     },

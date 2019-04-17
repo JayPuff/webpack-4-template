@@ -34,6 +34,11 @@ new Vue({
 // If running within electron, check for updates.
 if (store.state.context.electron) {
     window.electronAPIs.autoUpdater.checkForUpdates()
+
+    // Check every two minutes.
+    setInterval(() => {
+        window.electronAPIs.autoUpdater.checkForUpdates()
+    }, 120000 )
 }
 
 // Handle browser resize

@@ -109,6 +109,13 @@ function createWindow () {
     mainWindow.once('ready-to-show', function () {
         mainWindow.show()
     })
+
+    // Do not allow for zooming in or out
+    mainWindow.webContents.on('did-finish-load', () => {
+        mainWindow.webContents.setZoomFactor(1);
+        mainWindow.webContents.setVisualZoomLevelLimits(1, 1);
+        mainWindow.webContents.setLayoutZoomLevelLimits(0, 0);
+    });
 }
 
 function loadIndexHTML() {
