@@ -24,6 +24,8 @@ const dev = (process.argv.indexOf('--devServer') !== -1)
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+// Set Remote Logger
+setupLogging()
 
 // Set single instance for app.
 setAppSingleInstance(true)
@@ -240,4 +242,18 @@ function launchAutoUpdater() {
 }
 
 
+// Remote Logging
+function setupLogging() {
+    ipcMain.on('file-logger-log', (ev, obj) => {
+        log.log(obj.message)
+    })
+
+    ipcMain.on('file-logger-warn', (ev, obj) => {
+        log.warn(obj.message)
+    })
+
+    ipcMain.on('file-logger-error', (ev, obj) => {
+        log.error(obj.message)
+    })
+}
 

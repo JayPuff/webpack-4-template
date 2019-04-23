@@ -178,6 +178,22 @@ function setupConfig() {
 
 setupConfig()
 
+
+
+// logging
+window.electronAPIs.logger = {
+    log: (arg) => {
+        ipcRenderer.send('file-logger-log', { message: arg })
+    },
+    warn: (arg) => {
+        ipcRenderer.send('file-logger-warn', { message: arg })
+    },
+    error: (arg) => {
+        ipcRenderer.send('file-logger-error', { message: arg })
+    }
+}
+
+
 // File writing / reading...
 // Establish with both NODE in electron, and indexedDB on browser? 
 

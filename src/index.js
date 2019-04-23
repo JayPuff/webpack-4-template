@@ -33,6 +33,8 @@ if (store.state.context.electron) {
     // Try to fetch static electron config file
     // optional config.json in .../Users/<user>/AppData/Roaming/<app name>/ (Windows)
     store.dispatch('context/setElectronConfig')
+
+    window.electronAPIs.logger.log('Hello from index.js!')
 }
 
 // Main Vue Instance and Component
