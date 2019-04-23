@@ -7,6 +7,7 @@
         <p> Current CSS Breakpoint: <span class="purple">{{ $store.state.context.breakpoint.name }}</span></p>
         <p> Mobile or tablet: <span :class="lessThan('m') ? 'blue' : 'green'"> {{ lessThan('m') ? 'Yes' : 'Nope'}} </span></p>
         <p> {{ $store.state.context.config ? `Static JSON Config: ${JSON.stringify($store.state.context.config)}` : 'No Static JSON Config.' }} </p>
+        <p> {{ $store.state.context.electronConfig ? `electron JSON Config: ${JSON.stringify($store.state.context.electronConfig)}` : 'No Electron JSON Config.' }} </p>
     </div>
 </template>
 

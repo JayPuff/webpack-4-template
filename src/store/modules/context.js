@@ -14,8 +14,10 @@ const state = {
 
     
     // Initial config from static/public folder `config.js`
-    // An easy way to configure app without recompiling etc. once deployed.
+    // An easy way to configure app without recompiling etc. once deployed..
     config: {},
+    // Should maybe be null for the context of non-vue or simply checking this without observing it? Other wise can't tell if its loaded yet.
+    electronConfig: {}
 }
 
 
@@ -48,6 +50,14 @@ const actions = {
         } else {
             commit('NO_STATIC_CONFIG', {} )
         }
+    },
+
+    setElectronConfig({ commit, state }, payload) {
+        if(window.electronAPIs && window.electronAPIs.config) {
+            commit('SET_ELECTRON_CONFIG', { config: window.electronAPIs.config })
+        } else {
+            commit('NO_ELECTRON_CONFIG', {} )
+        }
     }
 }
 
@@ -66,8 +76,16 @@ const mutations = {
         state.config = payload.config
     },
 
-    NO_STATIC_CONFIG (state, config) {
+    SET_ELECTRON_CONFIG (state, payload) {
+        state.electronConfig = payload.config
+    },
+
+    NO_STATIC_CONFIG (state, payload) {
         state.config = {}
+    },
+
+    NO_ELECTRON_CONFIG (state, payload) {
+        state.electronConfig = { _notFound: true }
     },
 
 }

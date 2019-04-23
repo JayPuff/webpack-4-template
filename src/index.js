@@ -19,6 +19,22 @@ Vue.config.productionTip = false
 // Try to fetch static config file
 store.dispatch('context/fetchStaticConfig')
 
+
+// If running within electron, check for updates.
+if (store.state.context.electron) {
+    window.electronAPIs.autoUpdater.checkForUpdates()
+
+    // Check every two minutes.
+    setInterval(() => {
+        window.electronAPIs.autoUpdater.checkForUpdates()
+    }, 120000 )
+
+
+    // Try to fetch static electron config file
+    // optional config.json in .../Users/<user>/AppData/Roaming/<app name>/ (Windows)
+    store.dispatch('context/setElectronConfig')
+}
+
 // Main Vue Instance and Component
 import App from 'Components/App'
 
@@ -30,16 +46,6 @@ new Vue({
     render: f => f(App)
 })
 
-
-// If running within electron, check for updates.
-if (store.state.context.electron) {
-    window.electronAPIs.autoUpdater.checkForUpdates()
-
-    // Check every two minutes.
-    setInterval(() => {
-        window.electronAPIs.autoUpdater.checkForUpdates()
-    }, 120000 )
-}
 
 // Handle browser resize
 import debounce from 'lodash.debounce'

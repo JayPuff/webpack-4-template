@@ -1,5 +1,6 @@
 const path = require('path')
 const url = require('url')
+const fs = require('fs')
 
 // electron-log can be used to log to electron console and file system.
 // Location of log file
@@ -18,11 +19,11 @@ const ipcMain = electron.ipcMain;
 
 // Development options
 const dev = (process.argv.indexOf('--devServer') !== -1)
-const reactTools = false
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
 
 // Set single instance for app.
 setAppSingleInstance(true)
@@ -139,14 +140,6 @@ function loadIndexHTML() {
 
 
 
-
-
-
-
-
-
-
-
 // ** APPLICATION SINGLE INSTANCE MANAGEMENT ** //
 function setAppSingleInstance (singleInstanceMode) {
     if(!singleInstanceMode) return;
@@ -164,9 +157,6 @@ function setAppSingleInstance (singleInstanceMode) {
         return;
     }
 }
-
-
-
 
 
 
@@ -248,3 +238,6 @@ function launchAutoUpdater() {
     // Let renderer process initiate this instead.
     // autoUpdater.checkForUpdates()
 }
+
+
+

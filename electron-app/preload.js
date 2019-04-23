@@ -9,7 +9,6 @@ const path = require('path')
 window.electronAPIs = {}
 
 
-
 // ** Auto Updater **
 // Auto updater funcitonality.
 // Methods to update and messages sent from events.
@@ -148,6 +147,36 @@ window.electronAPIs.browserWindow = {
     }
 }
 
+
+// Electron Config
+function readConfig(configHandler) {
+    let fileContents
+    try {
+        console.log(remote.app.getPath("userData"))
+        fileContents = fs.readFileSync(path.resolve(remote.app.getPath("userData"), 'config.json'))
+    } catch (error) {
+        configHandler({ _noConfig: true })
+        return
+    }
+
+    let jsonContents = {}
+    try {
+        jsonContents = JSON.parse(fileContents)
+    } catch (error) {
+        configHandler({ _jsonError: true })
+        return;
+    }
+
+    configHandler(jsonContents)
+}
+
+function setupConfig() {
+    readConfig((config) => {
+        window.electronAPIs.config = config
+    })
+}
+
+setupConfig()
 
 // File writing / reading...
 // Establish with both NODE in electron, and indexedDB on browser? 
