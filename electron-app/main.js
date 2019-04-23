@@ -146,17 +146,17 @@ function loadIndexHTML() {
 function setAppSingleInstance (singleInstanceMode) {
     if(!singleInstanceMode) return;
 
-    var duplicateWindow = app.makeSingleInstance(function(commandLine, workingDirectory) {
-        // Someone tried to run a second instance, we should focus our window.
-        if (mainWindow) {
-            if (mainWindow.isMinimized()) mainWindow.restore();
-            mainWindow.focus();
-        }
-    });
-    
-    if (duplicateWindow) {
+    const lock = app.requestSingleInstanceLock()
+    if(!lock) { 
         app.quit()
-        return;
+    } else {
+        app.on('second-instance', function(commandLine, workingDirectory) {
+            // Someone tried to run a second instance, we should focus our window.
+            if(mainWindow) {
+                if (mainWindow.isMinimized()) mainWindow.restore();
+                mainWindow.focus();
+            }
+        });
     }
 }
 

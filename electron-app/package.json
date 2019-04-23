@@ -3,11 +3,11 @@
     "productName": "Electron Application",
     "description": "Template Description",
     "author": "Nicolas Correa",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "main": "main.js",
     "dependencies": {
         "electron-log": "^2.2.14",
-        "electron-updater": "^3.1.1"
+        "electron-updater": "^4.0.6"
     },
     "devDependencies": {
         "electron-devtools-installer": "^2.2.3"
