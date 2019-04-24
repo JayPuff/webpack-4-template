@@ -15,9 +15,9 @@ const state = {
     
     // Initial config from static/public folder `config.js`
     // An easy way to configure app without recompiling etc. once deployed..
-    config: {},
+    config: null,
     // Should maybe be null for the context of non-vue or simply checking this without observing it? Other wise can't tell if its loaded yet.
-    electronConfig: {}
+    electronConfig: null
 }
 
 
@@ -81,11 +81,11 @@ const mutations = {
     },
 
     NO_STATIC_CONFIG (state, payload) {
-        state.config = {}
+        state.config = null
     },
 
     NO_ELECTRON_CONFIG (state, payload) {
-        state.electronConfig = { _notFound: true }
+        state.electronConfig = null
     },
 
 }
