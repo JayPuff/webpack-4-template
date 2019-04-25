@@ -89,9 +89,52 @@ ipcRenderer.on('auto-updater-event', function(sender, event) {
 })
 
 
+// Electron Config
+function readConfig(configHandler) {
+    let fileContents
+    try {
+        console.log(remote.app.getPath("userData"))
+        fileContents = fs.readFileSync(path.resolve(remote.app.getPath("userData"), 'config.json'))
+    } catch (error) {
+        configHandler({ _noConfig: true })
+        return
+    }
+
+    let jsonContents = {}
+    try {
+        jsonContents = JSON.parse(fileContents)
+    } catch (error) {
+        configHandler({ _jsonError: true })
+        return;
+    }
+
+    configHandler(jsonContents)
+}
+
+function setupConfig() {
+    readConfig((config) => {
+        window.electronAPIs.config = config
+    })
+}
+
+setupConfig()
 
 
-// Browser window.
+
+// logging
+window.electronAPIs.logger = {
+    log: (arg) => {
+        ipcRenderer.send('file-logger-log', { message: arg })
+    },
+    warn: (arg) => {
+        ipcRenderer.send('file-logger-warn', { message: arg })
+    },
+    error: (arg) => {
+        ipcRenderer.send('file-logger-error', { message: arg })
+    }
+}
+
+// Browser window APIs.
 window.electronAPIs.browserWindow = {
     resize: (width, height, animateMac) => {
         remote.getCurrentWindow().setSize(width,height, animateMac)
@@ -147,51 +190,6 @@ window.electronAPIs.browserWindow = {
     }
 }
 
-
-// Electron Config
-function readConfig(configHandler) {
-    let fileContents
-    try {
-        console.log(remote.app.getPath("userData"))
-        fileContents = fs.readFileSync(path.resolve(remote.app.getPath("userData"), 'config.json'))
-    } catch (error) {
-        configHandler({ _noConfig: true })
-        return
-    }
-
-    let jsonContents = {}
-    try {
-        jsonContents = JSON.parse(fileContents)
-    } catch (error) {
-        configHandler({ _jsonError: true })
-        return;
-    }
-
-    configHandler(jsonContents)
-}
-
-function setupConfig() {
-    readConfig((config) => {
-        window.electronAPIs.config = config
-    })
-}
-
-setupConfig()
-
-
-
-// logging
-window.electronAPIs.logger = {
-    log: (arg) => {
-        ipcRenderer.send('file-logger-log', { message: arg })
-    },
-    warn: (arg) => {
-        ipcRenderer.send('file-logger-warn', { message: arg })
-    },
-    error: (arg) => {
-        ipcRenderer.send('file-logger-error', { message: arg })
-    }
-}
 
 
 // File writing / reading...
