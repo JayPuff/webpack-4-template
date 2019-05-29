@@ -10,6 +10,16 @@ import Vue from 'vue'
 import store from 'Store'
 import router from 'Routes'
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').then(registration => {
+            console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+        });
+    });
+}
+
 // Sync router with vuex so we can use this.$store.state.route ... reactively.
 import { sync } from 'vuex-router-sync'
 sync(store, router)

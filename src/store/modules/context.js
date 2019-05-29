@@ -7,6 +7,7 @@ const state = {
     // Running Environment 
     electron: context.isElectron(),
     dev: WEBPACK_DEV, /* Global exposed by webpack config, allowed by eslint as well. */
+    version: VERSION,
 
     // Current CSS Breakpoint
     breakpoint: initialBreakpoint,

@@ -39,7 +39,7 @@ export default {
 .home {
     text-align: center;
     width: 100%;
-    height: 100vh;
+    height: 100vh; 
     font-size: 17px;
     @include flex(column, center, center, nowrap);
 

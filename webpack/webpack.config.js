@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin")
 const CircularDependencyPlugin = require('circular-dependency-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const webpack = require('webpack')
 
 
@@ -67,6 +68,14 @@ if(process.env.electronBuild) copyConfiguration = copyConfiguration.concat((conf
 const copyPlugin = new CopyWebpackPlugin(copyConfiguration)
 
 
+// Work Box - Google offline service worker library
+const wbPlugin = new WorkboxPlugin.GenerateSW({
+    // these options encourage the ServiceWorkers to get in there fast 
+    // and not allow any straggling "old" SWs to hang around
+    clientsClaim: true,
+    skipWaiting: true,
+})
+
 
 // ** Webpack Plugin Config **
 const prodPlugins = []
@@ -80,6 +89,10 @@ prodPlugins.push(htmlWebPackPlugin)
 prodPlugins.push(new webpack.DefinePlugin({
     WEBPACK_DEV: JSON.stringify(false)
 }))
+prodPlugins.push(new webpack.DefinePlugin({
+    VERSION: JSON.stringify(require("../package.json").version)
+}))
+prodPlugins.push(wbPlugin)
 
 // Dev Pluggins
 devPlugins.push(new VueLoaderPlugin())
@@ -98,6 +111,10 @@ devPlugins.push(new CircularDependencyPlugin({
 devPlugins.push(new webpack.DefinePlugin({
     WEBPACK_DEV: JSON.stringify(true)
 }))
+devPlugins.push(new webpack.DefinePlugin({
+    VERSION: JSON.stringify(require("../package.json").version)
+}))
+// devPlugins.push(wbPlugin)
 
 
 
