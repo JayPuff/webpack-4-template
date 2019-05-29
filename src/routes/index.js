@@ -15,7 +15,6 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {
-    console.log(to)
     if(to.meta && to.meta.title) {
         window.document.title = to.meta.title
     }

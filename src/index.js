@@ -11,13 +11,34 @@ import store from 'Store'
 import router from 'Routes'
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js').then(registration => {
-            console.log('SW registered: ', registration);
-        }).catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-        });
-    });
+    if(!store.state.context.dev) { 
+        if(USE_SERVICE_WORKER) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js').then(registration => {
+                    console.log('Service Worker registered successfully. (For website offline access)', registration);
+                }).catch(registrationError => {
+                    console.log('Service Worker for offline mode could not register or is not supported on this browser. (Are you not on HTTPS?)', registrationError);
+                });
+            });
+        } else {
+            console.log('Trying to Remove any existing service workers.');
+            navigator.serviceWorker.getRegistrations().then((registrations) => {
+                let removedWorkers = 0
+                for(let registration of registrations) {
+                    removedWorkers += 1
+                    registration.unregister()
+                    console.log('Removed a service worker.');
+                }
+                if(removedWorkers == 0) {
+                    console.log('No service workers found.');
+                }
+            })
+        }
+    } else {
+        console.log('Service Worker for offline mode will not register since we are running on DEV mode.')
+    }
+} else {
+    console.warn('Service Worker for offline mode could not register or is not supported on this browser. (Are you not on HTTPS?)')
 }
 
 // Sync router with vuex so we can use this.$store.state.route ... reactively.

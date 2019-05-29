@@ -3,6 +3,9 @@ const config = {
     // Tell webpack to use linter (Config should be at .eslintrc)
     useLinter: true,
 
+    // define and register SW for offline website caching
+    offlineMode: false,
+
     // Dev Server Ports for Browser / Electron
     devServerPort: {
         browser: 8080,

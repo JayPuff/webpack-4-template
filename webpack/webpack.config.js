@@ -92,7 +92,13 @@ prodPlugins.push(new webpack.DefinePlugin({
 prodPlugins.push(new webpack.DefinePlugin({
     VERSION: JSON.stringify(require("../package.json").version)
 }))
-prodPlugins.push(wbPlugin)
+prodPlugins.push(new webpack.DefinePlugin({
+    USE_SERVICE_WORKER: JSON.stringify(config.offlineMode)
+}))
+
+if(config.offlineMode) {
+    prodPlugins.push(wbPlugin)
+}
 
 // Dev Pluggins
 devPlugins.push(new VueLoaderPlugin())
@@ -114,7 +120,9 @@ devPlugins.push(new webpack.DefinePlugin({
 devPlugins.push(new webpack.DefinePlugin({
     VERSION: JSON.stringify(require("../package.json").version)
 }))
-// devPlugins.push(wbPlugin)
+devPlugins.push(new webpack.DefinePlugin({
+    USE_SERVICE_WORKER: JSON.stringify(false)
+}))
 
 
 
