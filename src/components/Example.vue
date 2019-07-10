@@ -33,7 +33,7 @@ export default {
 @import "Styles/mixins.scss";
 @import "Styles/globals.scss";
 
-.template {
-    
+.example {
+    color: black;
 }
 </style>

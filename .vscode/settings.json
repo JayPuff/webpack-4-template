@@ -3,6 +3,8 @@
     "editor.accessibilitySupport": "off",
     "workbench.iconTheme": "vscode-icons",
     "editor.detectIndentation": false,
+    "terminal.integrated.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'Dank Mono', Consolas, 'Courier New', monospace",
     "eslint.validate": [
         "javascript",
         "javascriptreact",

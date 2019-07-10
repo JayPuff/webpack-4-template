@@ -4,7 +4,7 @@ const config = {
     useLinter: true,
 
     // define and register SW for offline website caching
-    offlineMode: false,
+    offlineMode: true,
 
     // Dev Server Ports for Browser / Electron
     devServerPort: {
