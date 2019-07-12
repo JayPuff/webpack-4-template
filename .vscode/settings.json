@@ -189,7 +189,7 @@
                     "scope": "support.constant",
                     "settings": {
                         "fontStyle": "",
-                        "foreground": "#7ae3f7"
+                        "foreground": "#7ff0d4"
                     }
                 },
                 {
@@ -199,7 +199,7 @@
                         "support.class"
                     ],
                     "settings": {
-                        "foreground": "#7ae3f7"
+                        "foreground": "#7ff0d4"
                     }
                 },
                 {

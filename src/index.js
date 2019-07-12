@@ -4,7 +4,6 @@ import './index.scss'
 // Import Polyfills and others from Tools (Promise)
 import 'Tools/polyfills'
 
-
 // Vue Dependencies
 import Vue from 'vue'
 import store from 'Store'

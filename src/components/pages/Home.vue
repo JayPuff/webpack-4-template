@@ -17,10 +17,19 @@
 
 import { mapGetters } from 'vuex'
 export default {
-    components: {  }, 
+    components: {  },  
     data: () => {
         return {
             message: "Nick's Vue Project Template" + `something`
+        }
+    },
+
+    methods: {
+        name() {
+            let docrument = 'something'
+            docrument = 'a'
+            document.something = 'a'
+            JSON
         }
     },
 
