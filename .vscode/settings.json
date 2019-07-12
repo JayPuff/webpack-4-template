@@ -35,20 +35,21 @@
               "color": "#c95b81"
             }
         ],
-        // Match {{  thing  }} within vue templates.
-        "({{[/!^>#]*\\s*)([^}]+)(\\s*}})": [
-             {
+        // {{ Vue Brackets }}
+        "({{[/!^>#]*)([^}]+)(}})(.*)": [
+            {
                 "color": "#7ff0d4",
-             },  
-             {
+            },  
+            {
                 // "overviewRulerColor": "#ffcc00",
                 // "backgroundColor": "#1c1f1e",
                 // "fontWeight": "bold"
-             },
-             {
+            },
+            {
                 "color": "#7ff0d4",
-             } 
-         ],
+            },
+            {}
+        ],
     },
     "editor.tokenColorCustomizations": {
         "[Dark Mode Warm]": {
