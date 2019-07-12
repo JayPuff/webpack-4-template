@@ -215,7 +215,6 @@
                     "name": "Invalid",
                     "scope": "invalid",
                     "settings": {
-                        "background": "#F9267200",
                         "fontStyle": "",
                         "foreground": "#adcf38"
                     }
@@ -224,7 +223,6 @@
                     "name": "Invalid deprecated",
                     "scope": "invalid.deprecated",
                     "settings": {
-                        "background": "#AE81FF00",
                         "foreground": "#adcf38"
                     }
                 },
@@ -232,7 +230,7 @@
                     "name": "CSS property",
                     "scope": "support.type.property-name.css",
                     "settings": {
-                        "foreground": "#e1e1ff",
+                        "foreground": "#e3f1f3",
                         "fontStyle": "italic"
                     }
                 },
@@ -370,7 +368,8 @@
                     "name": "[CSS] - ID Selector",
                     "scope": "entity.other.attribute-name.id.css",
                     "settings": {
-                        "foreground": "#FFB454"
+                        "foreground": "#ef9b51",
+                        "fontStyle": ""
                     }
                 },
                 {
@@ -399,7 +398,16 @@
                         "source.stylus support.constant"
                     ],
                     "settings": {
-                        "foreground": "#a79df7"
+                        "foreground": "#97c1f0"
+                    }
+                },
+                {
+                    "name": "[CSS] - Constant",
+                    "scope": [
+                        "source.css keyword.other.unit",
+                    ],
+                    "settings": {
+                        "foreground": "#6da9ee"
                     }
                 },
                 {
@@ -411,7 +419,7 @@
                         "source.stylus punctuation.definition.string"
                     ],
                     "settings": {
-                        "foreground": "#a79df7"
+                        "foreground": "#ef9b51"
                     }
                 },
                 {
@@ -422,6 +430,15 @@
                     ],
                     "settings": {
                         "foreground": "#9effff"
+                    }
+                },
+                {
+                    "name": "[CSS] - Variable",
+                    "scope": [
+                        "source.css support.constant.property-value.css",
+                    ],
+                    "settings": {
+                        "foreground": "#97c1f0"
                     }
                 },
                 {
@@ -440,6 +457,34 @@
                     ],
                     "settings": {
                         "foreground": "#ffffff"
+                    }
+                },
+                {
+                    "name": "CSS attribute",
+                    "scope": [
+                        "source.css entity.other.attribute-name.class.css"
+                    ],
+                    "settings": {
+                        "foreground": "#ef9b51"
+                    }
+                },
+                {
+                    "name": "CSS pseudo attribute",
+                    "scope": [
+                        "source.cas entity.other.attribute-name.pseudo-class.css",
+                        "source.css entity.other.attribute-name.pseudo-element.css"
+                    ],
+                    "settings": {
+                        "foreground": "#ffc600"
+                    }
+                },
+                {
+                    "name": "CSS property (vendor)",
+                    "scope": [
+                        "source.css support.type.vendored.property-name.css"
+                    ],
+                    "settings": {
+                        "foreground": "#e1e1ff"
                     }
                 },
                 {

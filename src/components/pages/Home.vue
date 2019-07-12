@@ -31,10 +31,15 @@ export default {
 </script>
 
 
+
 <!-- Style -->
 <style lang="scss" scoped>
 @import "Styles/mixins.scss";
 @import "Styles/globals.scss";
+
+#hello {
+    text-align: red;
+}
 
 .home {
     text-align: center;
