@@ -1,6 +1,6 @@
 # Project Template Structure and Details
 
-Last README update: 4th December, 2018 by Nicolas Correa
+Last README update: 12th July, 2019 by Nicolas Correa
 -----
 
 ## Overview
@@ -8,7 +8,9 @@ My all purpose project template tailored towards the Vue framework.
 
 It uses Webpack 4
 Currently tested on: Windows 10 (Some package.json commands might need to be tweaked at most on Linux and Mac)
-Currently working with: VS Code IDE, Vetur extension (For vue), eslint extension (For linter), vscode-icons (a nice to have)
+Currently working with: VS Code IDE, Vetur extension (For vue), eslint extension (For linter)
+
+This project has my own VS Code settings under .vscode in root, you can just comment this or rename the file out so it doesn't affect your vs code themes.
 
 -----
 
