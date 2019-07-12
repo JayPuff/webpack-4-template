@@ -8,14 +8,12 @@
 
 <!-- Script -->
 <script>
-import { request } from 'http';
 export default {
     components: {},
     data: () => {
         return {};
         
     },
-    
     
     created() {
         console.log("App component created successfully!")
