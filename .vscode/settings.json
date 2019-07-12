@@ -1,7 +1,7 @@
 {
     "window.zoomLevel": 0,
     "editor.accessibilitySupport": "off",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "seti",
     "editor.detectIndentation": false,
     "eslint.validate": [
         "javascript",
@@ -12,6 +12,44 @@
     "editor.fontFamily": "'Fira Code', 'Dank Mono', Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "workbench.colorTheme": "Dark Mode Warm",
+    "highlight.regexes": {
+        // Yellowish Todo lines
+        "(// ?TODO:?)(.*)": [
+            {
+              "overviewRulerColor": "#e3b236",
+              "color": "#e3b236",
+              "fontWeight": "bold"
+            },
+            {
+              "color": "#e3b236"
+            }
+        ],
+        // Redish Fixme lines
+        "(// ?FIXME:?)(.*)": [
+            {
+              "overviewRulerColor": "#c95b81",
+              "color": "#c95b81",
+              "fontWeight": "bold"
+            },
+            {
+              "color": "#c95b81"
+            }
+        ],
+        // Match {{  thing  }} within vue templates.
+        "({{[/!^>#]*\\s*)([^}]+)(\\s*}})": [
+             {
+                "color": "#7ff0d4",
+             },  
+             {
+                // "overviewRulerColor": "#ffcc00",
+                // "backgroundColor": "#1c1f1e",
+                // "fontWeight": "bold"
+             },
+             {
+                "color": "#7ff0d4",
+             } 
+         ],
+    },
     "editor.tokenColorCustomizations": {
         "[Dark Mode Warm]": {
             "textMateRules": [

@@ -6,11 +6,8 @@
 </template>
 
 
-
 <!-- Script -->
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
     components: {},
     data: () => {
@@ -24,11 +21,13 @@ export default {
 
     methods: {
         enter(el, done) {
+            // Do animation here and use done as callback
             el.style.display = "flex"
             done()
         },
 
         leave(el, done) {
+            // Do animation here and use done as callback
             el.style.display = "none"
             done()
         }

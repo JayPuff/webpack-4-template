@@ -22,7 +22,7 @@ export default {
 
     computed: {
         ...mapGetters('context', [ 'lessThanOrEquals', 'lessThan', 'equals', 'greaterThan', 'greaterThanOrEquals' ]),
-    } 
+    }
 
 };
 </script>
