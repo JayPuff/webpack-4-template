@@ -35,30 +35,29 @@
               "color": "#c95b81"
             }
         ],
-        // {{ Vue Brackets }}
-        "({{[/!^>#]*)([^}]+)(}})(.*)": [
-            {
-                "color": "#7ff0d4",
-            },  
-            {
-                // "overviewRulerColor": "#ffcc00",
-                // "backgroundColor": "#1c1f1e",
-                // "fontWeight": "bold"
-            },
-            {
-                "color": "#7ff0d4",
-            },
-            {}
-        ],
     },
     "editor.tokenColorCustomizations": {
         "[Dark Mode Warm]": {
             "textMateRules": [
                 {
-                    "name": "[HTML] - Quotes. these are a slightly different colour because expand selection will then not include quotes",
-                    "scope": "punctuation.definition.string.begin, punctuation.definition.string.end",
+                    "name": "Quotes. these are a slightly different colour because expand selection will then not include quotes",
+                    "scope": "punctuation.definition.string.begin, punctuation.definition.string.end, punctuation.definition.string.template.begin, punctuation.definition.string.template.end",
                     "settings": {
                         "foreground": "#e2ad68"
+                    }
+                },
+                {
+                    "name": "[vue-HTML] - template brackets open",
+                    "scope": ["source.vue text.html.vue-html expression.embedded.vue punctuation.definition.generic.begin.html"],
+                    "settings": {
+                        "foreground": "#7ff0d4"
+                    }
+                },
+                {
+                    "name": "[vue-HTML] - template brackets open",
+                    "scope": ["source.vue text.html.vue-html expression.embedded.vue punctuation.definition.generic.end.html"],
+                    "settings": {
+                        "foreground": "#7ff0d4"
                     }
                 },
                 {
@@ -305,7 +304,7 @@
                     "name": "Entity Name Type JS",
                     "scope": "entity.name.type.js",
                     "settings": {
-                        "foreground": "#e1efff"
+                        "foreground": "#7ff0d4"
                     }
                 },
                 {

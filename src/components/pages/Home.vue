@@ -5,7 +5,7 @@
         <p> Running in <span :class="$store.state.context.dev ? 'blue' : 'purple'"> {{ $store.state.context.dev ? 'Development' : 'Production'}} </span> mode</p>
         <p> Running in <span :class="$store.state.context.electron ? 'blue' : 'green'"> {{ $store.state.context.electron ? 'Electron' : 'Browser'}} </span></p>
         <p> Current CSS Breakpoint: <span class="purple">{{ $store.state.context.breakpoint.name }}</span></p>
-        <p> Mobile or tablet: <span :class="lessThan('m') ? 'blue' : 'green'"> {{ lessThan('m') ? 'Yes' : 'Nope'}} </span></p>
+        <p> Mobile or tablet: <span :class="lessThan('m') ? 'blue' : 'green'"> {{ lessThan(`m`) ? 'Yes' : 'Nope'}} </span></p>
         <p> {{ $store.state.context.config ? `Static JSON Config: ${JSON.stringify($store.state.context.config)}` : 'No Static JSON Config.' }} </p>
         <p> {{ $store.state.context.electronConfig ? `electron JSON Config: ${JSON.stringify($store.state.context.electronConfig)}` : 'No Electron JSON Config.' }} </p>
     </div>
@@ -17,10 +17,10 @@
 
 import { mapGetters } from 'vuex'
 export default {
-    components: {  },
+    components: {  }, 
     data: () => {
         return {
-            message: "Nick's Vue Project Template"
+            message: "Nick's Vue Project Template" + `something`
         }
     },
 
