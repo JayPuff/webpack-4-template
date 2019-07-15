@@ -49,14 +49,14 @@
                     "name": "[vue-HTML] - template brackets open",
                     "scope": ["source.vue text.html.vue-html expression.embedded.vue punctuation.definition.generic.begin.html"],
                     "settings": {
-                        "foreground": "#7ff0d4"
+                        "foreground": "#4EC9B0"
                     }
                 },
                 {
                     "name": "[vue-HTML] - template brackets open",
                     "scope": ["source.vue text.html.vue-html expression.embedded.vue punctuation.definition.generic.end.html"],
                     "settings": {
-                        "foreground": "#7ff0d4"
+                        "foreground": "#4EC9B0"
                     }
                 },
                 {
@@ -110,7 +110,7 @@
                 },
                 {
                     "name": "Keyword",
-                    "scope": "keyword",
+                    "scope": ["keyword", "keyword.operator.expression", "keyword.operator.logical", "keyword.operator.comparison", "keyword.operator.new"],
                     "settings": {
                         "foreground": "#cd83cf"
                     }
@@ -126,6 +126,13 @@
                 {
                     "name": "Storage type",
                     "scope": "storage.type",
+                    "settings": {
+                        "foreground": "#cd83cf"
+                    }
+                },
+                {
+                    "name": "Storage type",
+                    "scope": "storage.modifier",
                     "settings": {
                         "foreground": "#cd83cf"
                     }
@@ -189,7 +196,7 @@
                     "scope": "support.constant",
                     "settings": {
                         "fontStyle": "",
-                        "foreground": "#7ff0d4"
+                        "foreground": "#4EC9B0"
                     }
                 },
                 {
@@ -199,7 +206,7 @@
                         "support.class"
                     ],
                     "settings": {
-                        "foreground": "#7ff0d4"
+                        "foreground": "#4EC9B0"
                     }
                 },
                 {
@@ -215,14 +222,14 @@
                     "scope": "invalid",
                     "settings": {
                         "fontStyle": "",
-                        "foreground": "#adcf38"
+                        "foreground": "#ce4188"
                     }
                 },
                 {
                     "name": "Invalid deprecated",
                     "scope": "invalid.deprecated",
                     "settings": {
-                        "foreground": "#adcf38"
+                        "foreground": "#ce4188"
                     }
                 },
                 {
@@ -251,7 +258,7 @@
                     "name": "[HTML] - ID value",
                     "scope": "meta.toc-list.id.html",
                     "settings": {
-                        "foreground": "#A5FF90"
+                        "foreground": "#ef9b51"
                     }
                 },
                 {
@@ -277,12 +284,20 @@
                     }
                 },
                 {
+                    "name": "arithmetic",
+                    "scope": "keyword.operator.arithmetic.js",
+                    "settings": {
+                        "foreground": "#e1efff"
+                    }
+                },
+                {
                     "name": "Keyword Operator Assignment JS",
-                    "scope": "keyword.operator.assignment.js",
+                    "scope": ["keyword.operator.assignment.js"],
                     "settings": {
                         "foreground": "#ffffff"
                     }
                 },
+
                 {
                     "name": "Punctuation Definition Block JS",
                     "scope": "punctuation.definition.block.js",
@@ -301,7 +316,7 @@
                     "name": "Entity Name Type JS",
                     "scope": "entity.name.type.js",
                     "settings": {
-                        "foreground": "#7ff0d4"
+                        "foreground": "#4EC9B0"
                     }
                 },
                 {
@@ -406,7 +421,7 @@
                         "source.css keyword.other.unit",
                     ],
                     "settings": {
-                        "foreground": "#6da9ee"
+                        "foreground": "#b2d4fa"
                     }
                 },
                 {

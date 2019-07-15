@@ -1,7 +1,7 @@
 <!-- Template -->
 <template>
     <div class="home">
-        <h2> {{ message }} </h2>
+        <h2 id="something"> {{ message }} </h2>
         <p> Running in <span :class="$store.state.context.dev ? 'blue' : 'purple'"> {{ $store.state.context.dev ? 'Development' : 'Production'}} </span> mode</p>
         <p> Running in <span :class="$store.state.context.electron ? 'blue' : 'green'"> {{ $store.state.context.electron ? 'Electron' : 'Browser'}} </span></p>
         <p> Current CSS Breakpoint: <span class="purple">{{ $store.state.context.breakpoint.name }}</span></p>
@@ -25,12 +25,6 @@ export default {
     },
 
     methods: {
-        name() {
-            let docrument = 'something'
-            docrument = 'a'
-            document.something = 'a'
-            JSON
-        }
     },
 
     computed: {  
