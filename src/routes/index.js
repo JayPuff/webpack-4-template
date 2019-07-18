@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-import Home from 'Components/pages/Home'
+import Home from 'Components/Example'
 
 const routes = [
         { name: 'home', path: '/', component: Home, meta: { title: 'Home Page' }},
