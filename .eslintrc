@@ -13,7 +13,7 @@
         "VERSION": true,
         "USE_SERVICE_WORKER": true
     },
-    "extends": ["eslint:recommended", "plugin:vue/essential"],
+    "extends": ["eslint:recommended"],
     "env": {
         "browser": true,
         "node": true

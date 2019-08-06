@@ -3,14 +3,10 @@ import './index.scss'
 
 // Import Polyfills and others from Tools (Promise)
 import 'Tools/polyfills'
-
-// Vue Dependencies
-import Vue from 'vue'
-import store from 'Store'
-import router from 'Routes'
+import context from 'Tools/context'
 
 if ('serviceWorker' in navigator) {
-    if(!store.state.context.dev) { 
+    if(!WEBPACK_DEV) { 
         if(USE_SERVICE_WORKER) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./service-worker.js').then(registration => {
@@ -34,24 +30,27 @@ if ('serviceWorker' in navigator) {
             })
         }
     } else {
-        console.log('Service Worker for offline mode will not register since we are running on DEV mode.')
+        if(USE_SERVICE_WORKER) {
+            console.log('Service Worker for offline mode will not register since we are running on DEV mode.')
+        } else {
+            // Should I remove service worker here too ?
+        }
     }
 } else {
     console.warn('Service Worker for offline mode could not register or is not supported on this browser. (Are you not on HTTPS?)')
 }
 
-// Sync router with vuex so we can use this.$store.state.route ... reactively.
-import { sync } from 'vuex-router-sync'
-sync(store, router)
 
-Vue.config.productionTip = false
-
-// Try to fetch static config file
-store.dispatch('context/fetchStaticConfig')
+// Try to read static config file
+if(window.staticConfig) {
+    console.log('Found static config: ', window.staticConfig)
+} else {
+    console.log('Did not find static config.')
+}
 
 
 // If running within electron, check for updates.
-if (store.state.context.electron) {
+if (context.isElectron()) {
     window.electronAPIs.autoUpdater.checkForUpdates()
 
     // Check every two minutes.
@@ -60,31 +59,23 @@ if (store.state.context.electron) {
     }, 120000 )
 
 
-    // Try to fetch static electron config file
+    // Try to read static electron config file
     // optional config.json in .../Users/<user>/AppData/Roaming/<app name>/ (Windows)
-    store.dispatch('context/setElectronConfig')
-
-    window.electronAPIs.logger.log('Hello from index.js!')
+    if(window.electronAPIs.config) {
+        console.log('Found electron config: ', window.electronAPIs.config)
+    } else {
+        console.log('Did not find electron config.')
+    }
 }
 
-// Main Vue Instance and Component
-import App from 'Components/App'
-
-new Vue({
-    el: '#root',
-    store,
-    router,
-    components: { App },
-    render: f => f(App)
-})
 
 
-// Handle browser resize
-import debounce from 'lodash.debounce'
+// // Handle browser resize
+// import debounce from 'lodash.debounce'
 
-const onResize = () => { store.dispatch('context/refreshBreakpoint') }
-const onResizeDebounced = debounce(onResize, 150)
+// const onResize = () => { store.dispatch('context/refreshBreakpoint') }
+// const onResizeDebounced = debounce(onResize, 150)
 
-window.addEventListener('resize', () => {
-    onResizeDebounced()
-})
+// window.addEventListener('resize', () => {
+//     onResizeDebounced()
+// })

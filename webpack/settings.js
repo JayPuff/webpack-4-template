@@ -4,7 +4,7 @@ const config = {
     useLinter: true,
 
     // define and register SW for offline website caching
-    offlineMode: true,
+    offlineMode: false,
 
     // Dev Server Ports for Browser / Electron
     devServerPort: {
@@ -16,7 +16,6 @@ const config = {
     filesToCopy: {
         browser: [
             {from: './static', to: './static'},
-            {from: './src/server', to: './server'}
         ],
 
         electron: [
@@ -50,9 +49,6 @@ const config = {
     // Aliases for importing files within Webpack.
     // Append any other alias needed specific to projects.
     aliases: {
-        Components: '../src/components',
-        Store: '../src/store',
-        Routes: '../src/routes',
         Api: '../src/api',
         Assets: '../src/assets',
         Tools: '../src/tools',
