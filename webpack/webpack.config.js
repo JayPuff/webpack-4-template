@@ -3,7 +3,6 @@ const config = require('./settings')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const VueLoaderPlugin = require("vue-loader/lib/plugin")
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const webpack = require('webpack')
@@ -84,7 +83,6 @@ const devPlugins = []
 // Prod Plugins 
 prodPlugins.push(copyPlugin)
 prodPlugins.push(extractCSSPlugin)
-prodPlugins.push(new VueLoaderPlugin())
 prodPlugins.push(htmlWebPackPlugin)
 prodPlugins.push(new webpack.DefinePlugin({
     WEBPACK_DEV: JSON.stringify(false)
@@ -101,7 +99,6 @@ if(config.offlineMode) {
 }
 
 // Dev Pluggins
-devPlugins.push(new VueLoaderPlugin())
 devPlugins.push(htmlWebPackPlugin)
 devPlugins.push(new CircularDependencyPlugin({
     // exclude detection of files based on a RegExp
@@ -169,10 +166,6 @@ module.exports = (env, argv) => {
                         }
                     }
                 ]
-            },
-            {
-                test: /\.vue$/,
-                use: ['vue-loader']
             }
         ]
         },
@@ -196,7 +189,7 @@ module.exports = (env, argv) => {
         devtool: (argv.mode == 'production') ? config.productionSourceMap ? 'nosources-source-map' : 'none' : 'eval-source-map',
 
         resolve: {
-            extensions: ['*', '.js', '.vue', '.json'],
+            extensions: ['*', '.js', '.json'],
             alias: aliases
         },
 
@@ -205,7 +198,7 @@ module.exports = (env, argv) => {
     if(config.useLinter) {
         webpackConfig.module.rules.push({
             enforce: 'pre',
-            test: /\.(js|vue)$/,
+            test: /\.(js)$/,
             loader: 'eslint-loader',
             exclude: /node_modules/
         })
