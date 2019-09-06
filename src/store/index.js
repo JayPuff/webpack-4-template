@@ -5,6 +5,7 @@ import Vue from 'vue'
 Vue.use(VueX)
 
 const store = {
+    strict: true,
     modules: {
         context,
     }

@@ -4,7 +4,7 @@ const config = {
     useLinter: true,
 
     // define and register SW for offline website caching
-    offlineMode: true,
+    offlineMode: false,
 
     // Dev Server Ports for Browser / Electron
     devServerPort: {
@@ -15,8 +15,8 @@ const config = {
     // What files/folders do we directly copy when building for Browser / Electron
     filesToCopy: {
         browser: [
-            {from: './static', to: './static'},
-            {from: './src/server', to: './server'}
+            {from: './static', to: './static'}
+            // {from: './src/server', to: './server'}
         ],
 
         electron: [
