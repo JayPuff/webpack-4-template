@@ -11,7 +11,6 @@
     "electron-build": "npm run _build-electron-files && cd dist && npm install --production && electron .",
     "installer": "npm run _build-electron-files && rimraf ./installer && electron-builder --publish always",
     "clean": "rimraf ./installer && rimraf ./dist",
-    "clone": "cd webpack/scripts/clone && npm i && node clone.js",
     "_build-electron-files": "rimraf ./dist && set electronBuild=true && webpack --config ./webpack/webpack.config.js --mode production",
     "_dev-electron": "set electronBuild=true && webpack-dev-server --config ./webpack/webpack.config.js --mode development",
     "_electron-dev": "cd electron-app && electron . --devServer"
