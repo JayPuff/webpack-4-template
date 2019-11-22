@@ -1,10 +1,8 @@
 import context from 'Tools/context'
-
 const initialBreakpoint = context.getCurrentBreakpoint()
 
 // Initial State
-const state = {
-    // Running Environment 
+const initialState = () => ({
     electron: context.isElectron(),
     dev: WEBPACK_DEV, /* Global exposed by webpack config, allowed by eslint as well. */
     version: VERSION,
@@ -13,13 +11,15 @@ const state = {
     breakpoint: initialBreakpoint,
     breakpoints: context.getDefaultBreakpoints(),
 
-    
     // Initial config from static/public folder `config.js`
     // An easy way to configure app without recompiling etc. once deployed..
     config: null,
     // Should maybe be null for the context of non-vue or simply checking this without observing it? Other wise can't tell if its loaded yet.
     electronConfig: null
-}
+})
+
+// State
+const state = initialState()
 
 
 // getters
@@ -65,6 +65,13 @@ const actions = {
 
 // mutations
 const mutations = {
+    RESET (state) {
+        const newState = initialState()
+        Object.keys(newState).forEach(key => {
+            state[key] = newState[key]
+        })
+    },
+    
     SET_BREAKPOINT (state, payload) {
         state.breakpoint = payload.breakpoint
     },

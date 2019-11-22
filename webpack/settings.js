@@ -56,7 +56,6 @@ const config = {
         Api: '../src/api',
         Assets: '../src/assets',
         Tools: '../src/tools',
-        Styles: '../src/styles',
     },
 
     // For potential debugging or special cases?

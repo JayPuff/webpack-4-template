@@ -37,12 +37,8 @@ export default {
 
 <!-- Style -->
 <style lang="scss" scoped>
-@import "Styles/mixins.scss";
-@import "Styles/globals.scss";
-
-#hello {
-    text-align: red;
-}
+@import "Assets/styles/mixins.scss";
+@import "Assets/styles/globals.scss";
 
 .home {
     text-align: center;

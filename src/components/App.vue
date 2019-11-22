@@ -39,6 +39,6 @@ export default {
 
 <!-- Style -->
 <style lang="scss" scoped>
-@import "Styles/globals.scss";
-@import "Styles/mixins.scss";
+@import "Assets/styles/mixins.scss";
+@import "Assets/styles/globals.scss";
 </style>
