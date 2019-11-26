@@ -20,7 +20,7 @@ export default {
     components: {  },  
     data: () => {
         return {
-            message: "Nick's Vue Project Template" + `something`
+            message: "Nick's Vue Project Template"
         }
     },
 
