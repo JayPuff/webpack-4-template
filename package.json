@@ -44,7 +44,7 @@
     "circular-dependency-plugin": "^5.0.2",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.1",
-    "electron": "^3.1.12",
+    "electron": "^15.5.5",
     "electron-builder": "^20.44.4",
     "es6-object-assign": "^1.1.0",
     "eslint": "^5.16.0",
